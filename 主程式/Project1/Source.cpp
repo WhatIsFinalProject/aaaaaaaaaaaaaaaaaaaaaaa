@@ -11,3 +11,35 @@
 #define mm 10
 #define delay 0
 
+void gotoxy(int xpos, int ypos)
+
+{
+
+	COORD scrn;
+
+	HANDLE hOuput = GetStdHandle(STD_OUTPUT_HANDLE);
+
+	scrn.X = xpos + 8; scrn.Y = ypos + 1;       //調整起始位置
+
+	SetConsoleCursorPosition(hOuput, scrn); //設定游標位置
+
+}
+void showCursor(int visible)
+{
+	CONSOLE_CURSOR_INFO ConCurInf;
+
+	HANDLE hStdOut = GetStdHandle(STD_OUTPUT_HANDLE);
+
+	hStdOut = GetStdHandle(STD_OUTPUT_HANDLE);
+
+	GetConsoleCursorInfo(hStdOut, &ConCurInf);
+
+	ConCurInf.bVisible = visible;
+
+	SetConsoleCursorInfo(hStdOut, &ConCurInf);
+
+}
+int main()
+{
+	return 0;
+}
