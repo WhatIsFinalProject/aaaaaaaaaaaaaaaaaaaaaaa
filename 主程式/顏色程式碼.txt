@@ -1,0 +1,62 @@
+#define _CRT_SECURE_NO_WARNINGS
+#include<stdio.h>
+#include <windows.h>  
+#include <stdlib.h>
+#include <iostream>   
+
+
+int main()
+{
+	size_t craft[20][20];
+	
+
+		printf("¥H¤U¬°«e´º¦rÃC¦â\n");
+	//¬õ¦â 
+	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), FOREGROUND_INTENSITY | FOREGROUND_RED);
+	printf("Hello(Red)\n");
+	//ÂÅ¦â 
+	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), FOREGROUND_INTENSITY | FOREGROUND_GREEN);
+	printf("Hello(Green)\n");
+	//ºñ¦â 
+	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), FOREGROUND_INTENSITY | FOREGROUND_BLUE);
+	printf("Hello(Blue)\n");
+	//¶À¦â=¬õ+ºñ 
+	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), FOREGROUND_INTENSITY | FOREGROUND_RED | FOREGROUND_GREEN);
+	printf("Hello(Yellow)\n");
+	//µµ¦â=¬õ+ÂÅ 
+	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), FOREGROUND_INTENSITY | FOREGROUND_RED | FOREGROUND_BLUE);
+	printf("Hello(Purple)\n");
+	//«Cºñ¦â=ºñ+ÂÅ 
+	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), FOREGROUND_INTENSITY | FOREGROUND_GREEN | FOREGROUND_BLUE);
+	printf("Hello(Cyan)\n");
+	//¥Õ¦â=¬õ+ºñ+ÂÅ 
+	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), FOREGROUND_INTENSITY | FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE);
+	printf("Hello(White)\n\n");
+
+	printf("¥H¤U¬°­I´ºÃC¦â\n");
+	//­I´º¬õ¦â 
+	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), BACKGROUND_INTENSITY | FOREGROUND_INTENSITY | BACKGROUND_RED);
+	printf("Hello(Back_Red)\n");
+	//­I´ºÂÅ¦â 
+	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), BACKGROUND_INTENSITY | FOREGROUND_INTENSITY | BACKGROUND_BLUE);
+	printf("Hello(Back_Blue)\n");
+	//­I´ººñ¦â 
+	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), BACKGROUND_INTENSITY | FOREGROUND_INTENSITY | BACKGROUND_GREEN);
+	printf("Hello(Back_Green)\n");
+	//­I´º¶À¦â=¬õ+ºñ 
+	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), BACKGROUND_INTENSITY | FOREGROUND_INTENSITY | BACKGROUND_RED | BACKGROUND_GREEN);
+	printf("Hello(Back_Yellow)\n");
+	//­I´ºµµ¦â=¬õ+ÂÅ 
+	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), BACKGROUND_INTENSITY | FOREGROUND_INTENSITY | BACKGROUND_RED | BACKGROUND_BLUE);
+	printf("Hello(Back_Purple)\n");
+	//­I´º«Cºñ¦â=ºñ+ÂÅ 
+	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), BACKGROUND_INTENSITY | FOREGROUND_INTENSITY | BACKGROUND_GREEN | BACKGROUND_BLUE);
+	printf("Hello(Back_Cyan)\n");
+	//­I´º¥Õ¦â=¬õ+ºñ+ÂÅ 
+	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), BACKGROUND_INTENSITY | FOREGROUND_INTENSITY | BACKGROUND_RED | BACKGROUND_GREEN | BACKGROUND_BLUE);
+	printf("Hello(Back_White)\n");
+	getchar();
+	
+	system("pause");
+	return 0;
+}
