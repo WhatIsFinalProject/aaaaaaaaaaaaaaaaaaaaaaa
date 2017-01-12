@@ -156,6 +156,49 @@ int main()
 			wprintf(L"               ");
 		} while (gameKey != 13);
 
+		while (!gameOver)
+		{
+			Information(Food, SnakeSpeed);
+
+			if (!FoodAppear)// 如果沒食物, 隨機算出一個食物的位置
+			{
+				foodcolor = (rand() % 4) + 1;
+				foodSite.x = ((rand() % (width / 2 - 1)) * 2) + 2;
+				foodSite.y = rand() % (length - 2) + 1;
+				FoodAppear = true;
+			}
+			gotoxy(foodSite.x, foodSite.y);
+			switch (foodcolor)
+			{
+			case 1:
+				SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), FOREGROUND_INTENSITY | 0X01);
+				wprintf(L"■");
+				SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), FOREGROUND_INTENSITY | 0X0f);
+				break;
+			case 2:
+				SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), FOREGROUND_INTENSITY | 0X02);
+				wprintf(L"■");
+				SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), FOREGROUND_INTENSITY | 0X0f);
+				break;
+			case 3:
+				SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), FOREGROUND_INTENSITY | 0X04);
+				wprintf(L"■");
+				SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), FOREGROUND_INTENSITY | 0X0f);
+				break;
+			case 4:
+				SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), FOREGROUND_INTENSITY | 0X08);
+				wprintf(L"■");
+				SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), FOREGROUND_INTENSITY | 0X0f);
+				break;
+			case 5:
+				SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), FOREGROUND_INTENSITY | 0X16);
+				wprintf(L"■");
+				SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), FOREGROUND_INTENSITY | 0X0f);
+				break;
+			default:
+				break;
+			}
+
 	}
 	return 0;
 }
