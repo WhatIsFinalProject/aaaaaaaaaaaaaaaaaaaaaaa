@@ -36,6 +36,7 @@ void gotoxy(int xpos, int ypos)
 	SetConsoleCursorPosition(hOuput, scrn); //設定游標位置
 
 }
+
 void showCursor(int visible)
 {
 	CONSOLE_CURSOR_INFO ConCurInf;
@@ -51,6 +52,7 @@ void showCursor(int visible)
 	SetConsoleCursorInfo(hStdOut, &ConCurInf);
 
 }
+
 void Snake(int bodylenhgt, int foodcolor)
 {
 	int color[2000] = { 0 };
@@ -74,6 +76,7 @@ void Snake(int bodylenhgt, int foodcolor)
 
 	}
 }
+
 void printWall(){
 
 	int i, j;
@@ -94,6 +97,23 @@ void printWall(){
 		}
 
 	}
+
+}
+
+void printSnake(int i){
+
+	gotoxy(sBody[i].x, sBody[i].y);
+	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), FOREGROUND_INTENSITY | 0X0e);
+	_setmode(_fileno(stdout), _O_U16TEXT);   //使用Unicode
+	wprintf(L"■");
+	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), FOREGROUND_INTENSITY | 0X0f);
+}
+
+void setSite(int i, int site_x, int site_y){
+
+	sBody[i].x = site_x;
+
+	sBody[i].y = site_y;
 
 }
 
