@@ -198,6 +198,124 @@ int main()
 			default:
 				break;
 			}
+			xyChanged = false;
+
+			if (_kbhit()){ // 鍵盤敲擊
+
+				keyinFirst = _getch();
+
+				if (keyinFirst == 224) {
+
+					keyinSecond = _getch();
+
+					switch (keyinSecond)
+					{
+
+					case  72: /* up, 1 */
+
+						if (path != 2)
+						{
+							coor.y--;
+							path = 1;
+							xyChanged = true;
+						}
+						break;
+
+					case  80: /* down, 2 */
+
+						if (path != 1)
+						{
+							coor.y++;
+							path = 2;
+							xyChanged = true;
+						}
+						break;
+
+					case  75: /* left, 3 */
+
+						if (path != 4)
+						{
+							coor.x -= 2;
+							path = 3;
+							xyChanged = true;
+						}
+						break;
+
+					case  77: /* right, 4 */
+
+						if (path != 3)
+						{
+							coor.x += 2;
+							path = 4;
+							xyChanged = true;
+						}
+						break;
+
+					}
+
+
+				}
+
+				if (keyinFirst == 'p' || keyinFirst == 'P')
+				{
+					do{
+						gotoxy(width + 4, 20);
+						wprintf(L"Ｐａｕｓｅ.");
+						gameKey = _getch();
+						gotoxy(width + 4, 20);
+						wprintf(L"          ");
+					} while (gameKey != 'p' && gameKey != 'P');
+				}
+
+
+
+			}
+			if (xyChanged == false) { // 沒有任何動作則順著path(方向)前進
+
+				switch (path){
+
+				case  1: /* up, 1 */
+
+					if (path != 2)
+					{
+						coor.y--;
+						path = 1;
+					}
+					break;
+
+				case  2: /* down, 2 */
+
+					if (path != 1)
+					{
+						coor.y++;
+						path = 2;
+					}
+					break;
+
+				case  3: /* left, 3 */
+
+					if (path != 4)
+					{
+						coor.x -= 2;
+						path = 3;
+					}
+					break;
+
+				case  4: /* right, 4 */
+
+					if (path != 3)
+					{
+						coor.x += 2;
+						path = 4;
+					}
+					break;
+
+				}
+
+				xyChanged = true;
+
+			}
+		}
 
 	}
 	return 0;
