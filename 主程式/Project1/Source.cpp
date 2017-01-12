@@ -39,6 +39,38 @@ void showCursor(int visible)
 	SetConsoleCursorInfo(hStdOut, &ConCurInf);
 
 }
+
+typedef struct snake
+{
+	int x;
+	int y;
+}Snake;
+
+Snake sBody[2500];
+
+void printWall(){
+
+	int i, j;
+
+
+	for (i = 0; i<length; i++){
+
+		for (j = 0; j<width + 1; j += 2){
+
+			if (i == 0 || i == length - 1 || j == 0 || j == width)
+			{
+				gotoxy(j, i);
+				_setmode(_fileno(stdout), _O_U16TEXT);   //使用Unicode
+				wprintf(L"■");
+
+			}
+
+		}
+
+	}
+
+}
+
 int main()
 {
 	return 0;
