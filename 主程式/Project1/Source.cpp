@@ -315,8 +315,100 @@ int main()
 				xyChanged = true;
 
 			}
+			for (i = 1; i<bodyLenght; i++){ /* Did XY_str die? */
+
+				if (coor.x == sBody[i].x && coor.y == sBody[i].y)
+
+					gameOver = true;
+
+			}if (gameOver == 0 && xyChanged == 1){ /* XY_str moving */
+
+				if (coor.x>0 && coor.x<width - 1 && coor.y>0 && coor.y<length - 1)
+				{
+
+					last.x = sBody[bodyLenght - 1].x;
+
+					last.y = sBody[bodyLenght - 1].y;
+
+					for (i = bodyLenght - 1; i >= 0; i--)
+					{
+						if (i == 0)
+						{
+							setSite(i, coor.x, coor.y);
+						}
+						else
+
+							setSite(i, sBody[i - 1].x, sBody[i - 1].y);  //讓後面一格的身體(x,y) = 前一格的身體(x,y)
+					}
+
+					if (last.x != 0 && last.y != 0)
+					{
+						gotoxy(last.x, last.y); // 清尾巴
+
+						wprintf(L"  ");
+					}
+					Snake(bodyLenght, foodcolor);
+
+					SnakeSpeed = -0.0009*bodyLenght*bodyLenght*bodyLenght + 0.040*bodyLenght*bodyLenght - 5.4088*bodyLenght + 113.52;
+					Sleep(SnakeSpeed);
+
+				}
+				else if (coor.x == 0)
+				{
+					coor.x = width;
+				}
+				else if (coor.x == width)
+				{
+					coor.x = 0;
+				}
+				else if (coor.y == length - 1)
+				{
+					coor.y = 0;
+				}
+				else if (coor.y == 0)
+				{
+					coor.y = length - 1;
+				}
+				else gameOver = true;
+
+
+
+				if (sBody[0].x == foodSite.x && sBody[0].y == foodSite.y) /* snakeHead ate food? */
+				{
+					FoodAppear = false;
+					if (bodyLenght<2000) bodyLenght++; // 避免蛇身超出陣列長度
+					Food++;
+				}
+
+			}
+
+		}
+
+		/* Game over ? */
+
+		while (1){
+
+			system("CLS");
+
+			wprintf(L"Your Grade: %d\n", Food * 100);
+
+			wprintf(L"Game over.\nPlay again? (y/n) \n");
+
+			gameKey = _getch();
+
+			if (gameKey == 'y' || gameKey == 'Y' || gameKey == 'n' || gameKey == 'N'){
+
+				system("CLS");
+
+				break;
+
+			}
+
 		}
 
 	}
+
+	wprintf(L"Bye!\n");
+	system("pause");
 	return 0;
 }
