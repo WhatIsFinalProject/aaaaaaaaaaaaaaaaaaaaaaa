@@ -1,15 +1,27 @@
-﻿#define _CRT_SECURE_NO_WARNINGS
-#include <stdio.h>
-#include <stdio.h>
-#include <windows.h>  
+﻿#include <stdio.h>
 #include <stdlib.h>
-#include <iostream>   
-#include <time.h>
 #include <conio.h>
-#define FOREGROUND_BLACK  0x0000
-#define FOREGROUND_YELLOW 0x1111
-#define mm 10
-#define delay 0
+#include <time.h>
+#include <math.h>
+#include <windows.h>
+#include <wchar.h>
+#include <io.h>
+#include <fcntl.h>
+
+#define length  25
+#define width   80
+#define true     1
+#define false    0
+
+
+typedef struct XY_str
+{
+	int x;
+	int y;
+}XY_str;   
+
+XY_str sBody[2500]; 
+
 
 void gotoxy(int xpos, int ypos)
 
@@ -39,15 +51,29 @@ void showCursor(int visible)
 	SetConsoleCursorInfo(hStdOut, &ConCurInf);
 
 }
-
-typedef struct snake
+void Snake(int bodylenhgt, int foodcolor)
 {
-	int x;
-	int y;
-}Snake;
+	int color[2000] = { 0 };
+	for (int i = 0; i < bodylenhgt; i++)
+	{
+		if (i<1)
+		{
+			gotoxy(sBody[i].x, sBody[i].y);
+			SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), FOREGROUND_INTENSITY | 0X032);
+			wprintf(L"■");
+			SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), FOREGROUND_INTENSITY | 0X0f);
+		}
+		else
+		{
+			color[i] = foodcolor;
+			gotoxy(sBody[i].x, sBody[i].y);
+			SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), FOREGROUND_INTENSITY | 0X0E);
+			wprintf(L"■");
+			SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), FOREGROUND_INTENSITY | 0X0f);
+		}
 
-Snake sBody[2500];
-
+	}
+}
 void printWall(){
 
 	int i, j;
@@ -73,5 +99,6 @@ void printWall(){
 
 int main()
 {
+
 	return 0;
 }
